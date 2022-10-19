@@ -5,8 +5,10 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import LinearRegression
 from sklearn import metrics
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
+import pickle as pkl
+import os
 
-car_data = pd.read_csv(r'.\data\car_data.csv')
+car_data = pd.read_csv(r'./data/car_data.csv')
 
 fuel_type = car_data['Fuel_Type']
 seller_type = car_data['Seller_Type']
@@ -43,6 +45,10 @@ X_test = scaler.transform(X_test)
 model = LinearRegression()
 
 model.fit(X_train, y_train)
+
+print("creating pkl file")
+print(os.getcwd())
+pkl.dump(model,open('./output.pkl','wb'))
 
 pred = model.predict(X_test)
 
