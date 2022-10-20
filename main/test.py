@@ -48,7 +48,7 @@ model.fit(X_train, y_train)
 
 print("creating pkl file")
 print(os.getcwd())
-pkl.dump(model,open('./output.pkl','wb'))
+pkl.dump(model,open('./model.pkl','wb'))
 
 pred = model.predict(X_test)
 
